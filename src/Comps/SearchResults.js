@@ -22,7 +22,6 @@ const SearchResluts = props => {
                                 authors={book.authors && book.authors.join(' , ')}
                                 shelf={book.shelf || 'none'}
                                 book={book}
-
                             />
                         )}
                     </ol>

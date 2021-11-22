@@ -23,8 +23,8 @@ const Shelf = props => {
                                 key={book.id}
                                 id={book.id}
                                 title={book.title}
-                                url={book.imageLinks.thumbnail}
-                                authors={book.authors.join(' , ')}
+                                url={(book.imageLinks&&book.imageLinks.thumbnail) || ''}
+                                authors={book.authors && book.authors.join(' , ')}
                                 shelf={book.shelf}
                                 book={book}
 

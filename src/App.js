@@ -5,7 +5,27 @@ import './App.css';
 import Shelf from './Comps/Shelf';
 import { getAll , update } from './BooksAPI';
 import Search from './Comps/Search';
-import { Route ,Routes,Link } from 'react-router-dom';
+import { Route, Routes, Link } from 'react-router-dom';
+const shelves = [
+  {
+    id: 'CR',
+    title: 'Currently Reading',
+    filter:'currentlyReading'
+
+  },
+  {
+    id: 'WR',
+    title: 'Want to Read',
+    filter:'wantToRead'
+
+  },
+  {
+    id: 'AR',
+    title: 'Read',
+    filter:'read'
+
+  }
+]
 
 
 
@@ -50,22 +70,17 @@ function App() {
         <Route path='/' element=
           {
            <Fragment>
-          <main>
-        <Shelf
-        onChangeBookShelf={changeBookShelfHandler}
-        shelfName='Currently Reading'
-        books={books.filter(book => book.shelf==='currentlyReading')}
-      ></Shelf>
-      <Shelf
-        onChangeBookShelf={changeBookShelfHandler}
-        shelfName='Want to Read'
-        books={books.filter(book => book.shelf==='wantToRead')}
-      ></Shelf>
-      <Shelf
-        onChangeBookShelf={changeBookShelfHandler}
-        shelfName='Read'
-        books={books.filter(book => book.shelf==='read')}
-      ></Shelf>
+            <main>
+              {
+                shelves.map(shelf => (
+                  <Shelf
+                    key={shelf.id}
+                    nChangeBookShelf={changeBookShelfHandler}
+                    shelfName={shelf.title}
+                    books={books.filter(book => book.shelf===shelf.filter)}
+                  />
+                ))
+              }
             </main>
             <aside>
         <div className="open-search">
