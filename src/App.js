@@ -75,7 +75,7 @@ function App() {
                 shelves.map(shelf => (
                   <Shelf
                     key={shelf.id}
-                    nChangeBookShelf={changeBookShelfHandler}
+                    onChangeBookShelf={changeBookShelfHandler}
                     shelfName={shelf.title}
                     books={books.filter(book => book.shelf===shelf.filter)}
                   />
